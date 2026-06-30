@@ -4,29 +4,29 @@
 
 @layer base {
   :root {
-    /* Warm light premium palette */
-    --background: 40 33% 97%;          /* warm white #FAFAF6 */
-    --foreground: 215 35% 12%;         /* deep navy ink */
+    /* ORTECH light premium palette — navy primary, orange flame accent */
+    --background: 36 30% 97%;
+    --foreground: 215 38% 13%;
     --card: 0 0% 100%;
-    --card-foreground: 215 35% 12%;
+    --card-foreground: 215 38% 13%;
     --popover: 0 0% 100%;
-    --popover-foreground: 215 35% 12%;
-    --primary: 215 45% 14%;            /* deep navy */
-    --primary-foreground: 40 33% 97%;
-    --secondary: 40 20% 93%;           /* warm cream */
-    --secondary-foreground: 215 35% 12%;
-    --muted: 40 15% 92%;
+    --popover-foreground: 215 38% 13%;
+    --primary: 215 42% 16%;
+    --primary-foreground: 36 30% 97%;
+    --secondary: 36 20% 94%;
+    --secondary-foreground: 215 38% 13%;
+    --muted: 36 16% 92%;
     --muted-foreground: 215 12% 38%;
-    --accent: 35 45% 55%;              /* refined ochre/brass */
+    --accent: 22 92% 53%;            /* ORTECH flame orange */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 70% 45%;
     --destructive-foreground: 0 0% 100%;
-    --border: 30 15% 86%;
-    --input: 30 15% 86%;
-    --ring: 215 45% 14%;
+    --border: 30 14% 86%;
+    --input: 30 14% 86%;
+    --ring: 215 42% 16%;
     --radius: 0.25rem;
-    --chart-1: 215 45% 14%;
-    --chart-2: 35 45% 55%;
+    --chart-1: 215 42% 16%;
+    --chart-2: 22 92% 53%;
     --chart-3: 200 30% 40%;
     --chart-4: 30 20% 70%;
     --chart-5: 215 20% 55%;
@@ -41,7 +41,6 @@
     font-family: var(--font-inter), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-feature-settings: "ss01", "cv01";
   }
   h1, h2, h3, h4, h5 {
     font-family: var(--font-serif), Georgia, serif;
@@ -51,7 +50,6 @@
 
 @layer utilities {
   .font-serif { font-family: var(--font-serif), Georgia, serif; }
-  .font-sans { font-family: var(--font-inter), system-ui, sans-serif; }
   .text-balance { text-wrap: balance; }
   .text-pretty { text-wrap: pretty; }
   .container-x { @apply mx-auto w-full max-w-[1320px] px-6 md:px-10; }
@@ -65,9 +63,6 @@
     background-image: radial-gradient(rgba(11,27,43,0.035) 1px, transparent 1px);
     background-size: 3px 3px;
   }
-  .hairline {
-    border-color: hsl(var(--border));
-  }
   .link-underline {
     background-image: linear-gradient(hsl(var(--accent)), hsl(var(--accent)));
     background-size: 0% 1px;
@@ -78,14 +73,8 @@
   .link-underline:hover { background-size: 100% 1px; }
 }
 
-@keyframes slowZoom {
-  from { transform: scale(1.02); }
-  to { transform: scale(1.12); }
-}
+@keyframes slowZoom { from { transform: scale(1.02); } to { transform: scale(1.12); } }
 .animate-slow-zoom { animation: slowZoom 18s ease-out forwards; }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 .fade-up { animation: fadeUp 0.9s ease-out both; }

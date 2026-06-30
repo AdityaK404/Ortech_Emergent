@@ -1,13 +1,12 @@
-import { trustedClients } from "@/data/site";
 import { PageHero, CTAStrip } from "../about/page";
 import { Quote } from "lucide-react";
 
 export const metadata = { title: "Clients — ORTECH Infra Pvt Ltd" };
 
 const sectors = [
-  { name: "Government & PSU", items: ["NHAI", "Indian Railways", "NTPC", "NHIDCL", "State PWDs", "Smart Cities Mission"] },
-  { name: "EPC Majors", items: ["L&T Construction", "Tata Projects", "Megha Engineering", "Dilip Buildcon", "NCC Limited"] },
-  { name: "Private Enterprises", items: ["Adani Group", "Reliance Industries", "GMR Group", "JSW Steel", "UltraTech Cement"] },
+  { name: "Telecom operators", items: ["Bharti Airtel", "BSNL", "Reliance Infocom", "Tata Teleservices", "Vodafone", "Nokia"] },
+  { name: "EPC majors", items: ["Larsen & Toubro", "MEIL", "ITI Limited"] },
+  { name: "Government & utilities", items: ["BTDA", "CPWD", "Karnataka Neeravari Nigam Ltd", "Karnataka Electricity Board"] },
 ];
 
 export default function ClientsPage() {
@@ -15,9 +14,9 @@ export default function ClientsPage() {
     <>
       <PageHero
         eyebrow="Clients"
-        title="Hired by the most demanding buyers in Indian infrastructure."
-        kicker="68% of FY24 revenue came from clients on three or more packages. Below is a partial list — detailed reference contacts are shared on request under NDA."
-        image="https://images.pexels.com/photos/7693692/pexels-photo-7693692.jpeg"
+        title="Trusted by operators, EPC majors and government bodies across India."
+        kicker="Most of our work is repeat appointments. Reference contacts are available under NDA for shortlisted RFQs."
+        image="https://images.unsplash.com/photo-1533664488202-6af66d26c44a"
       />
       <section className="container-x py-24 space-y-16">
         {sectors.map((s) => (
@@ -25,7 +24,7 @@ export default function ClientsPage() {
             <div className="eyebrow"><span className="accent-rule"></span>{s.name}</div>
             <div className="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-border">
               {s.items.map((c) => (
-                <div key={c} className="bg-background p-6 grid place-items-center text-center">
+                <div key={c} className="bg-background p-6 grid place-items-center text-center min-h-[96px]">
                   <div className="font-serif text-lg text-primary">{c}</div>
                 </div>
               ))}
@@ -35,8 +34,8 @@ export default function ClientsPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-border mt-12">
           {[
-            { q: "ORTECH ran Package 9 like a listed-major. Predictable, audit-clean, no surprises at handover.", a: "Project Director", c: "NHAI · NH-44 corridor" },
-            { q: "Their precast yard delivered 60m PSC segments to tolerance, in monsoon, on a live river. That is rare in India.", a: "Chief Engineer", c: "Indian Railways · SCR" },
+            { q: "ORTECH ran our Karnataka OFC rollout end-to-end — survey, HDD, blowing, splicing. Predictable, audit-clean handover.", a: "Rollout Lead", c: "Bharti Airtel · Karnataka" },
+            { q: "Their HDD crew completed multiple arterial crossings in Belagavi for the city gas network on schedule. That kind of delivery is rare.", a: "Project Engineer", c: "MEIL · Belagavi CGD" },
           ].map((t) => (
             <div key={t.q} className="bg-background p-10">
               <Quote className="h-6 w-6 text-accent" />

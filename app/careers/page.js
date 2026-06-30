@@ -5,12 +5,12 @@ import { PageHero, CTAStrip } from "../about/page";
 export const metadata = { title: "Careers — ORTECH Infra Pvt Ltd" };
 
 const roles = [
-  { title: "Project Manager — Highways", location: "Hyderabad / Site", type: "Full-time", exp: "12–18 yrs" },
-  { title: "Sr. Engineer — Bridges (PSC)", location: "Vijayawada", type: "Full-time", exp: "6–10 yrs" },
-  { title: "Planning Engineer — P6", location: "Hyderabad HQ", type: "Full-time", exp: "4–7 yrs" },
-  { title: "HSE Officer — Industrial", location: "Jamnagar", type: "Contract", exp: "5–8 yrs" },
-  { title: "Plant Manager — Heavy Fleet", location: "Hyderabad / Site", type: "Full-time", exp: "10–15 yrs" },
-  { title: "Quantity Surveyor", location: "Multiple sites", type: "Full-time", exp: "3–6 yrs" },
+  { title: "HDD Rig Operator / Foreman", location: "Karnataka · Site", type: "Full-time", exp: "5–10 yrs" },
+  { title: "Site Engineer — OFC / Telecom", location: "Karnataka & Maharashtra", type: "Full-time", exp: "3–6 yrs" },
+  { title: "Site Engineer — CGD", location: "Belagavi", type: "Full-time", exp: "4–7 yrs" },
+  { title: "Civil Site Engineer", location: "Multiple sites", type: "Full-time", exp: "3–6 yrs" },
+  { title: "Electrical Engineer — HT/LT", location: "Karnataka", type: "Full-time", exp: "3–7 yrs" },
+  { title: "Project Manager — Telecom Rollout", location: "Belagavi HQ", type: "Full-time", exp: "8–12 yrs" },
 ];
 
 export default function CareersPage() {
@@ -18,16 +18,16 @@ export default function CareersPage() {
     <>
       <PageHero
         eyebrow="Careers"
-        title="Build the country. Build a career that compounds."
-        kicker="We hire career operators — engineers, planners, plant specialists, HSE leaders — who treat infrastructure delivery as a craft. Below are current openings."
-        image="https://images.unsplash.com/photo-1593313637552-29c2c0dacd35"
+        title="Build India's networks. Build a career on real infrastructure."
+        kicker="We hire field operators, engineers and planners who treat infrastructure execution as a craft. Below are openings across our discipline lines."
+        image="https://images.unsplash.com/photo-1579847188804-ecba0e2ea330"
       />
       <section className="container-x py-24">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border mb-16">
           {[
-            { v: "1,800+", l: "Employees on rolls" },
-            { v: "4.7 yrs", l: "Median tenure" },
-            { v: "62%", l: "Internal promotions FY24" },
+            { v: "200+", l: "Skilled workforce" },
+            { v: "23 yrs", l: "Of continuous operations" },
+            { v: "6 lines", l: "Career paths across disciplines" },
           ].map((s) => (
             <div key={s.l} className="bg-background p-8">
               <div className="font-serif text-3xl text-accent">{s.v}</div>

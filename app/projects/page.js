@@ -22,7 +22,7 @@ export default function ProjectsPage() {
         <div className="relative container-x pt-28 pb-20 md:pt-36 md:pb-24">
           <div className="eyebrow text-accent"><span className="accent-rule bg-accent"></span>Projects</div>
           <h1 className="mt-5 font-serif text-[40px] md:text-[64px] leading-[1] tracking-tight max-w-4xl text-balance">
-            180+ packages delivered. Audited. Referenceable.
+            100+ packages delivered. Referenceable on request.
           </h1>
           <p className="mt-6 max-w-2xl text-primary-foreground/75">Filter by discipline to see relevant prior work. Every project on this page is referenceable on request.</p>
         </div>
