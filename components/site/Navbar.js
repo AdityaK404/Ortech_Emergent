@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
-import { navItems, LOGO_URL } from "@/data/site";
+import { navItems, LOGO_URL, WORDMARKS } from "@/data/site";
 import { cn } from "@/lib/utils";
 
 export default function Navbar() {
@@ -24,9 +24,18 @@ export default function Navbar() {
       <div className="container-x flex items-center justify-between h-[76px]">
         <Link href="/" className="flex items-center gap-3 group">
           <img src={LOGO_URL} alt="ORTECH" className="h-11 w-11 object-contain" />
-          <div className="leading-tight">
-            <div className="font-serif text-[18px] font-semibold tracking-tight text-primary">ORTECH</div>
-            <div className="text-[10px] tracking-[0.22em] uppercase text-muted-foreground">Infra Pvt Ltd</div>
+          <div className="leading-tight flex flex-col items-start">
+            <img
+              src={WORDMARKS.ortech}
+              alt="ORTECH"
+              className="h-[18px] w-auto object-contain mix-blend-multiply select-none"
+              draggable="false"
+            />
+            <div className="mt-1.5 flex items-center gap-1.5">
+              <img src={WORDMARKS.infra} alt="INFRA" className="h-[8px] w-auto object-contain mix-blend-multiply opacity-80" draggable="false" />
+              <img src={WORDMARKS.pvt} alt="PVT" className="h-[8px] w-auto object-contain mix-blend-multiply opacity-80" draggable="false" />
+              <img src={WORDMARKS.ltd} alt="LTD" className="h-[8px] w-auto object-contain mix-blend-multiply opacity-80" draggable="false" />
+            </div>
           </div>
         </Link>
 

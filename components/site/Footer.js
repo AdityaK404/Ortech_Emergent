@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { company, navItems, LOGO_URL } from "@/data/site";
+import { company, navItems, LOGO_URL, WORDMARKS } from "@/data/site";
 import { Mail, Phone, MapPin, Linkedin, Youtube, ArrowUpRight, Globe } from "lucide-react";
 
 export default function Footer() {
@@ -9,9 +9,19 @@ export default function Footer() {
         <div className="md:col-span-5">
           <div className="flex items-center gap-3">
             <img src={LOGO_URL} alt="ORTECH" className="h-12 w-12 object-contain bg-background/95 p-1" />
-            <div>
-              <div className="font-serif text-xl">ORTECH</div>
-              <div className="text-[10px] tracking-[0.22em] uppercase opacity-70">Infra Pvt Ltd</div>
+            <div className="flex flex-col items-start">
+              <img
+                src={WORDMARKS.ortech}
+                alt="ORTECH"
+                className="h-5 w-auto object-contain select-none"
+                style={{ filter: "invert(1)", mixBlendMode: "screen" }}
+                draggable="false"
+              />
+              <div className="mt-1.5 flex items-center gap-1.5">
+                <img src={WORDMARKS.infra} alt="INFRA" className="h-[9px] w-auto object-contain opacity-90" style={{ filter: "invert(1)", mixBlendMode: "screen" }} draggable="false" />
+                <img src={WORDMARKS.pvt} alt="PVT" className="h-[9px] w-auto object-contain opacity-90" style={{ filter: "invert(1)", mixBlendMode: "screen" }} draggable="false" />
+                <img src={WORDMARKS.ltd} alt="LTD" className="h-[9px] w-auto object-contain opacity-90" style={{ filter: "invert(1)", mixBlendMode: "screen" }} draggable="false" />
+              </div>
             </div>
           </div>
           <p className="mt-6 text-sm leading-relaxed text-primary-foreground/70 max-w-md">

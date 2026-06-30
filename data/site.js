@@ -1,6 +1,12 @@
 // ORTECH Infra Pvt Ltd — real content layer (CMS-ready)
 
 export const LOGO_URL = "https://customer-assets.emergentagent.com/job_ortech-build/artifacts/ggrn4llq_image.png";
+export const WORDMARKS = {
+  ortech: "https://customer-assets.emergentagent.com/job_ortech-build/artifacts/5idq9a9h_image.png",
+  infra: "https://customer-assets.emergentagent.com/job_ortech-build/artifacts/b9agqkmg_image.png",
+  pvt: "https://customer-assets.emergentagent.com/job_ortech-build/artifacts/57270cpq_image.png",
+  ltd: "https://customer-assets.emergentagent.com/job_ortech-build/artifacts/gsfvju8v_image.png",
+};
 
 export const company = {
   name: "ORTECH Infra Pvt Ltd",
