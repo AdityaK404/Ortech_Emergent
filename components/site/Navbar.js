@@ -17,55 +17,67 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className={cn(
-      "sticky top-0 z-50 transition-all duration-300 bg-ink",
-      scrolled ? "shadow-lg shadow-black/20" : ""
-    )}>
-      <div className="container-x flex items-center justify-between h-[72px]">
-        <Link href="/" className="flex items-center gap-3 group">
-          <img src={LOGO_URL} alt="ORTECH" className="h-10 w-10 object-contain" />
+    <header
+      className={cn(
+        "sticky top-0 z-50 transition-all duration-300 bg-background",
+        scrolled ? "border-b border-neutral-200 shadow-sm" : "border-b border-transparent"
+      )}
+    >
+      <div className="container-x flex items-center justify-between h-[92px]">
+        <Link href="/" className="flex items-center gap-4 group">
+          <img src={LOGO_URL} alt="ORTECH" className="h-16 w-16 object-contain" />
           <div className="leading-tight flex flex-col items-start">
             <img
               src={WORDMARKS.ortech}
               alt="ORTECH"
-              className="h-[16px] w-auto object-contain select-none"
-              style={{ filter: "invert(1)", mixBlendMode: "screen" }}
+              className="h-[26px] w-auto object-contain select-none"
+              style={{ mixBlendMode: "multiply" }}
               draggable="false"
             />
-            <div className="mt-1 flex items-center gap-1.5">
-              <img src={WORDMARKS.infra} alt="INFRA" className="h-[7px] w-auto object-contain opacity-90" style={{ filter: "invert(1)", mixBlendMode: "screen" }} draggable="false" />
-              <img src={WORDMARKS.pvt} alt="PVT" className="h-[7px] w-auto object-contain opacity-90" style={{ filter: "invert(1)", mixBlendMode: "screen" }} draggable="false" />
-              <img src={WORDMARKS.ltd} alt="LTD" className="h-[7px] w-auto object-contain opacity-90" style={{ filter: "invert(1)", mixBlendMode: "screen" }} draggable="false" />
+            <div className="mt-1.5 flex items-center gap-2">
+              <img src={WORDMARKS.infra} alt="INFRA" className="h-[10px] w-auto object-contain" style={{ mixBlendMode: "multiply" }} draggable="false" />
+              <img src={WORDMARKS.pvt} alt="PVT" className="h-[10px] w-auto object-contain" style={{ mixBlendMode: "multiply" }} draggable="false" />
+              <img src={WORDMARKS.ltd} alt="LTD" className="h-[10px] w-auto object-contain" style={{ mixBlendMode: "multiply" }} draggable="false" />
             </div>
           </div>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
           {navItems.map((n) => (
-            <Link key={n.href} href={n.href} className="text-[12px] font-semibold uppercase tracking-[0.12em] text-white/70 hover:text-white px-3 py-2 transition-colors">
+            <Link
+              key={n.href}
+              href={n.href}
+              className="text-[12px] font-semibold uppercase tracking-[0.12em] text-neutral-700 hover:text-neutral-900 px-3 py-2 transition-colors"
+            >
               {n.label}
             </Link>
           ))}
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
-          <Link href="/contact" className="btn-primary">
+          <Link href="/contact" className="btn-primary whitespace-nowrap">
             Request a Project
             <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
 
-        <button className="lg:hidden p-2 -mr-2 text-white" onClick={() => setOpen((o) => !o)} aria-label="Toggle menu">
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        <button className="lg:hidden p-2 -mr-2 text-neutral-900" onClick={() => setOpen((o) => !o)} aria-label="Toggle menu">
+          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 
       {open && (
-        <div className="lg:hidden border-t border-ink-3 bg-ink">
+        <div className="lg:hidden border-t border-neutral-200 bg-background">
           <div className="container-x py-4 flex flex-col">
             {navItems.map((n) => (
-              <Link key={n.href} href={n.href} onClick={() => setOpen(false)} className="py-3 border-b border-ink-3 text-[13px] uppercase tracking-[0.12em] text-white/80 font-semibold flex items-center justify-between">
-                {n.label}<ArrowRight className="h-4 w-4 text-accent" />
+              <Link
+                key={n.href}
+                href={n.href}
+                onClick={() => setOpen(false)}
+                className="py-3 border-b border-neutral-200 text-[13px] uppercase tracking-[0.12em] text-neutral-800 font-semibold flex items-center justify-between"
+              >
+                {n.label}
+                <ArrowRight className="h-4 w-4 text-accent" />
               </Link>
             ))}
             <Link href="/contact" onClick={() => setOpen(false)} className="mt-4 btn-primary">

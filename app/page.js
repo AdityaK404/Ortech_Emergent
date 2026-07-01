@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { ArrowRight, Quote } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import SectionHeader from "@/components/site/SectionHeader";
-import { services, projects, machinery, milestones, heroStats } from "@/data/site";
+import { services, milestones, heroStats, allClients } from "@/data/site";
 
 const HERO = "https://images.unsplash.com/photo-1559510981-10719ce4266a";
 const PROCESS = [
@@ -15,11 +15,6 @@ const SERVICE_AREAS = [
   { name: "North Karnataka", img: "https://images.unsplash.com/photo-1533664488202-6af66d26c44a", desc: "Telecom backbone and last-mile OFC across Belagavi, Bagalkot, Dharwad and Hubli." },
   { name: "Uttara Kannada", img: "https://images.unsplash.com/photo-1772600110243-f4e1349259b6", desc: "BSNL 4G saturation programme — 24F OFC across coastal Karnataka with HDD + open trench hybrid." },
   { name: "Maharashtra", img: "https://images.unsplash.com/photo-1583024011792-b165975b52f5", desc: "L&T BSNL packages — underground OFC and utility infrastructure across the state." },
-];
-const TESTIMONIALS = [
-  { q: "ORTECH ran our Karnataka OFC rollout end-to-end — survey, HDD, blowing, splicing. Predictable, audit-clean handover.", who: "Rollout Lead", where: "Bharti Airtel · Karnataka" },
-  { q: "Their HDD crew completed multiple arterial crossings in Belagavi for the city gas network on schedule. That kind of delivery is rare.", who: "Project Engineer", where: "MEIL · Belagavi CGD" },
-  { q: "On the BSNL Maharashtra package, ORTECH delivered underground OFC to spec with clean weekly reporting and zero safety incidents.", who: "EPC Package Manager", where: "Larsen & Toubro" },
 ];
 
 export default function Home() {
@@ -123,52 +118,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========== WORK IN THE FIELD (PROJECTS) ========== */}
-      <section className="bg-secondary/60 border-y border-border">
-        <div className="container-x py-20 md:py-28">
-          <div className="flex items-end justify-between gap-6 mb-10">
-            <div className="max-w-2xl">
-              <h2 className="font-display text-[30px] md:text-[42px] leading-[1.05] tracking-tight text-neutral-900 text-balance">
-                Our Work in the Field
-              </h2>
-              <p className="mt-4 text-sm text-neutral-600">Successful telecom, HDD and utility deployments across India.</p>
-            </div>
-            <Link href="/projects" className="link-orange hidden md:inline-flex">View All Projects <ArrowRight className="h-3.5 w-3.5" /></Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {projects.slice(0, 3).map((p) => (
-              <article key={p.slug} className="bg-white group">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img src={p.image} alt={p.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                </div>
-                <div className="p-6">
-                  <div className="tag-orange">{p.category}</div>
-                  <h3 className="mt-3 font-display text-xl text-neutral-900 leading-snug">{p.title}</h3>
-                  <p className="mt-3 text-sm text-neutral-600 leading-relaxed">{p.summary}</p>
-                  <div className="mt-5 pt-5 border-t border-neutral-200 text-[11px] tracking-[0.14em] uppercase text-neutral-500">
-                    {p.client} · {p.state}
-                  </div>
-                </div>
-              </article>
-            ))}
+      {/* ========== TRUSTED-BY MARQUEE ========== */}
+      <section className="bg-background border-y border-neutral-200 overflow-hidden">
+        <div className="container-x pt-16 md:pt-20">
+          <div className="text-center max-w-3xl mx-auto">
+            <div className="eyebrow">Reliability Built on Trust</div>
+            <h2 className="mt-3 font-display text-[30px] md:text-[42px] leading-[1.05] tracking-tight text-neutral-900 text-balance">
+              Trusted by India's leading operators, EPCs and government bodies.
+            </h2>
           </div>
         </div>
-      </section>
-
-      {/* ========== RELIABILITY / TESTIMONIALS ========== */}
-      <section className="bg-background">
-        <div className="container-x py-20 md:py-28">
-          <h2 className="font-display text-[30px] md:text-[42px] leading-[1.05] tracking-tight text-neutral-900 text-balance text-center">
-            Reliability Built on Trust
-          </h2>
-          <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {TESTIMONIALS.map((t) => (
-              <div key={t.q} className="bg-white border border-neutral-200 p-8">
-                <Quote className="h-6 w-6 text-accent" strokeWidth={2.5} />
-                <p className="mt-5 text-[15px] text-neutral-700 leading-relaxed">“{t.q}”</p>
-                <div className="mt-6 h-px w-10 bg-accent" />
-                <div className="mt-5 font-display text-sm text-neutral-900">{t.who}</div>
-                <div className="mt-1 text-[11px] tracking-[0.14em] uppercase text-neutral-500">{t.where}</div>
+        <div className="mt-14 pb-16 md:pb-20 relative">
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
+          <div className="flex w-max animate-marquee">
+            {[...allClients, ...allClients].map((c, i) => (
+              <div key={i} className="flex items-center px-10 md:px-14 shrink-0">
+                <span className="font-display text-4xl md:text-6xl uppercase tracking-tight text-neutral-900 whitespace-nowrap">
+                  {c}
+                </span>
+                <span className="ml-10 md:ml-14 h-3 w-3 rotate-45 bg-accent shrink-0" />
               </div>
             ))}
           </div>

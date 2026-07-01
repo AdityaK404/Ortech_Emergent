@@ -39,6 +39,22 @@ export const trustedClients = [
   "Nokia",
 ];
 
+export const allClients = [
+  "Bharti Airtel",
+  "BSNL",
+  "Larsen & Toubro",
+  "MEIL",
+  "Reliance Infocom",
+  "Tata Teleservices",
+  "Vodafone",
+  "Nokia",
+  "ITI Limited",
+  "BTDA",
+  "CPWD",
+  "Karnataka Neeravari Nigam",
+  "Karnataka Electricity Board",
+];
+
 export const milestones = [
   { year: "2000", title: "Incorporation", body: "Founded in Belagavi, Karnataka, to deliver specialised telecom and utility infrastructure for emerging Indian operators." },
   { year: "2008", title: "HDD specialisation", body: "Commissioned dedicated Horizontal Directional Drilling fleet for utility crossings and trenchless installation." },

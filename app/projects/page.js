@@ -25,7 +25,7 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <section className="sticky top-[72px] z-30 bg-background border-b border-border">
+      <section className="sticky top-[92px] z-30 bg-background border-b border-border">
         <div className="container-x py-4 flex flex-wrap items-center gap-2">
           <Filter className="h-3.5 w-3.5 text-neutral-400 mr-2" />
           {projectCategories.map((c) => (
