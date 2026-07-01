@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="ORTECH logo">
+  <rect width="256" height="256" rx="56" fill="#0f172a"/>
+  <circle cx="128" cy="128" r="78" fill="none" stroke="#f59e0b" stroke-width="16"/>
+  <path d="M88 168V88h38c24 0 39 12 39 32 0 14-8 24-20 28l24 20h-28l-20-17h-15v17H88zm18-34h18c11 0 18-5 18-14s-7-14-18-14h-18v28z" fill="#ffffff"/>
+</svg>
