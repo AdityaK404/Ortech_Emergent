@@ -4,11 +4,6 @@ import SectionHeader from "@/components/site/SectionHeader";
 import { services, projects, machinery, milestones, heroStats } from "@/data/site";
 
 const HERO = "https://images.unsplash.com/photo-1559510981-10719ce4266a";
-const PROBLEMS = [
-  { img: "https://images.unsplash.com/photo-1509390144018-eeaf65052242", title: "Missed Deadlines", body: "Poorly-planned OFC routes and rented HDD rigs derail rollouts. Our owned 5-rig fleet + in-house survey team keeps schedule on track." },
-  { img: "https://images.unsplash.com/photo-1559510981-10719ce4266a", title: "Costly Rework", body: "Bad splicing, weak welding or non-compliant cabling means rework, penalties and reputation loss. Every ORTECH job is OTDR / hydro tested before handover." },
-  { img: "https://images.unsplash.com/photo-1509390673020-a5b2450e33f1", title: "Safety & Compliance Risk", body: "Class I Electrical / Civil registration, documented method statements and daily toolbox talks eliminate incident exposure across live-utility sites." },
-];
 const PROCESS = [
   { n: "01", title: "Survey & Planning", body: "Route survey, GPS mapping, ROW planning and utility locating — before a single trench is opened." },
   { n: "02", title: "HDD or Open-Cut", body: "Owned 5-rig HDD fleet for trenchless crossings; open-cut trenching for greenfield corridors." },
@@ -59,31 +54,6 @@ export default function Home() {
               <div key={s.label} className={`py-8 md:py-10 ${i !== 0 ? "md:border-l border-ink-3" : ""} ${i % 2 !== 0 ? "border-l border-ink-3 md:border-l" : ""}`}>
                 <div className="font-display text-3xl md:text-4xl text-white">{s.value}</div>
                 <div className="mt-2 text-[11px] tracking-[0.14em] uppercase text-white/50 max-w-[220px] leading-relaxed">{s.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ========== COSTLY PROBLEMS ========== */}
-      <section className="bg-ink text-white">
-        <div className="container-x py-20 md:py-28">
-          <div className="max-w-3xl">
-            <h2 className="font-display text-[30px] md:text-[42px] leading-[1.05] tracking-tight text-white text-balance">
-              The Costly Problems of Telecom & Utility Rollouts
-            </h2>
-            <p className="mt-5 text-[15px] text-white/60 leading-relaxed">
-              Subsurface work, live-utility crossings, and pan-state OFC rollouts derail timelines and budgets in hours. We eliminate the friction through owned plant, in-house engineering, and rigid safety protocols.
-            </p>
-          </div>
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {PROBLEMS.map((p) => (
-              <div key={p.title} className="bg-ink-2 border border-ink-3 p-6">
-                <div className="aspect-[16/10] overflow-hidden mb-6">
-                  <img src={p.img} alt={p.title} className="h-full w-full object-cover grayscale" />
-                </div>
-                <h3 className="font-display text-xl text-white">{p.title}</h3>
-                <p className="mt-3 text-sm text-white/60 leading-relaxed">{p.body}</p>
               </div>
             ))}
           </div>
