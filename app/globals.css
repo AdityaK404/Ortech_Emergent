@@ -4,32 +4,37 @@
 
 @layer base {
   :root {
-    /* ORTECH light premium palette — navy primary, orange flame accent */
-    --background: 36 30% 97%;
-    --foreground: 215 38% 13%;
+    /* GSB-inspired industrial palette: near-black + off-white + vibrant orange */
+    --background: 40 12% 96%;          /* off-white light section */
+    --foreground: 0 0% 10%;            /* near-black text */
     --card: 0 0% 100%;
-    --card-foreground: 215 38% 13%;
+    --card-foreground: 0 0% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 215 38% 13%;
-    --primary: 215 42% 16%;
-    --primary-foreground: 36 30% 97%;
-    --secondary: 36 20% 94%;
-    --secondary-foreground: 215 38% 13%;
-    --muted: 36 16% 92%;
-    --muted-foreground: 215 12% 38%;
-    --accent: 22 92% 53%;            /* ORTECH flame orange */
+    --popover-foreground: 0 0% 10%;
+    --primary: 0 0% 10%;               /* charcoal */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 40 8% 93%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 40 6% 92%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 22 92% 53%;              /* vibrant industrial orange */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 70% 45%;
     --destructive-foreground: 0 0% 100%;
-    --border: 30 14% 86%;
-    --input: 30 14% 86%;
-    --ring: 215 42% 16%;
-    --radius: 0.25rem;
-    --chart-1: 215 42% 16%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 10%;
+    --radius: 0.375rem;
+    --chart-1: 0 0% 10%;
     --chart-2: 22 92% 53%;
-    --chart-3: 200 30% 40%;
-    --chart-4: 30 20% 70%;
-    --chart-5: 215 20% 55%;
+    --chart-3: 0 0% 40%;
+    --chart-4: 0 0% 70%;
+    --chart-5: 22 60% 70%;
+
+    /* Custom section colors */
+    --ink: 0 0% 8%;                    /* main dark section bg */
+    --ink-2: 0 0% 12%;                 /* card-on-dark bg */
+    --ink-3: 0 0% 18%;                 /* border-on-dark */
   }
 }
 
@@ -43,38 +48,54 @@
     -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5 {
-    font-family: var(--font-serif), Georgia, serif;
-    letter-spacing: -0.01em;
+    font-family: var(--font-display), var(--font-inter), system-ui, sans-serif;
+    letter-spacing: -0.015em;
+    font-weight: 700;
   }
 }
 
 @layer utilities {
-  .font-serif { font-family: var(--font-serif), Georgia, serif; }
+  .font-display { font-family: var(--font-display), var(--font-inter), system-ui, sans-serif; font-weight: 700; letter-spacing: -0.015em; }
+  .font-serif { font-family: var(--font-display), var(--font-inter), system-ui, sans-serif; font-weight: 700; letter-spacing: -0.015em; }
+  .font-sans { font-family: var(--font-inter), system-ui, sans-serif; }
   .text-balance { text-wrap: balance; }
   .text-pretty { text-wrap: pretty; }
-  .container-x { @apply mx-auto w-full max-w-[1320px] px-6 md:px-10; }
+  .container-x { @apply mx-auto w-full max-w-[1280px] px-6 md:px-10; }
+
+  .bg-ink { background-color: hsl(var(--ink)); }
+  .bg-ink-2 { background-color: hsl(var(--ink-2)); }
+  .border-ink-3 { border-color: hsl(var(--ink-3)); }
+
   .eyebrow {
-    @apply text-[11px] font-medium uppercase tracking-[0.22em] text-muted-foreground;
+    @apply text-[11px] font-semibold uppercase tracking-[0.18em] text-accent;
   }
-  .accent-rule {
-    @apply inline-block h-px w-10 align-middle bg-accent mr-3;
+  .tag-orange {
+    @apply text-[11px] font-semibold uppercase tracking-[0.18em] text-accent;
   }
-  .grain {
-    background-image: radial-gradient(rgba(11,27,43,0.035) 1px, transparent 1px);
-    background-size: 3px 3px;
+  .link-orange {
+    @apply inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.14em] text-accent;
+    padding-bottom: 4px;
+    border-bottom: 1.5px solid hsl(var(--accent));
+    transition: gap 0.25s ease;
   }
-  .link-underline {
-    background-image: linear-gradient(hsl(var(--accent)), hsl(var(--accent)));
-    background-size: 0% 1px;
-    background-position: 0 100%;
-    background-repeat: no-repeat;
-    transition: background-size 0.4s ease;
+  .link-orange:hover { gap: 12px; }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-accent text-accent-foreground px-6 py-3.5 text-[13px] font-semibold uppercase tracking-[0.05em] hover:bg-accent/90 transition-colors;
   }
-  .link-underline:hover { background-size: 100% 1px; }
+  .btn-outline-dark {
+    @apply inline-flex items-center justify-center gap-2 border border-neutral-700 text-white/90 px-6 py-3.5 text-[13px] font-semibold uppercase tracking-[0.05em] hover:bg-white/5 transition-colors;
+  }
+  .btn-outline-light {
+    @apply inline-flex items-center justify-center gap-2 border border-neutral-900 text-neutral-900 px-6 py-3.5 text-[13px] font-semibold uppercase tracking-[0.05em] hover:bg-neutral-900 hover:text-white transition-colors;
+  }
+  .btn-ghost-dark {
+    @apply inline-flex items-center justify-center gap-2 bg-neutral-800 text-white px-6 py-3.5 text-[13px] font-semibold uppercase tracking-[0.05em] hover:bg-neutral-700 transition-colors;
+  }
 }
 
-@keyframes slowZoom { from { transform: scale(1.02); } to { transform: scale(1.12); } }
-.animate-slow-zoom { animation: slowZoom 18s ease-out forwards; }
+@keyframes slowZoom { from { transform: scale(1.02); } to { transform: scale(1.1); } }
+.animate-slow-zoom { animation: slowZoom 22s ease-out forwards; }
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 .fade-up { animation: fadeUp 0.9s ease-out both; }
