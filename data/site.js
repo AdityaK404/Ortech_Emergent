@@ -243,12 +243,16 @@ export const leadership = [
 ];
 
 export const navItems = [
+  { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Projects", href: "/projects" },
   { label: "Machinery", href: "/machinery" },
   { label: "Clients", href: "/clients" },
+  { label: "Contact", href: "/contact" },
+];
+
+export const moreNavItems = [
   { label: "Credentials", href: "/credentials" },
   { label: "Careers", href: "/careers" },
-  { label: "Contact", href: "/contact" },
 ];
