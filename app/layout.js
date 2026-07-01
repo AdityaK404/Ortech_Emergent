@@ -41,7 +41,7 @@ export const metadata = {
       "ORTECH Infra is an infrastructure engineering and execution company established in 2000, specialising in Telecom Infrastructure, Horizontal Directional Drilling (HDD), City Gas Distribution (CGD), Civil and Electrical Infrastructure across India.",
     images: [LOGO_URL],
   },
-  icons: { icon: LOGO_URL, shortcut: LOGO_URL, apple: LOGO_URL },
+  icons: { icon: "/favicon.ico", shortcut: "/favicon.ico", apple: "/favicon.ico" },
 };
 
 export default function RootLayout({ children }) {
