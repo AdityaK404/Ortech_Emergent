@@ -1,4 +1,4 @@
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Inter, Space_Grotesk, Merriweather } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/site/Navbar";
 import Footer from "@/components/site/Footer";
@@ -8,6 +8,7 @@ import { LOGO_URL } from "@/data/site";
 
 const inter = Inter({ subsets: ["latin"], weight: ["300","400","500","600","700"], variable: "--font-inter", display: "swap" });
 const display = Space_Grotesk({ subsets: ["latin"], weight: ["500","600","700"], variable: "--font-display", display: "swap" });
+const hero = Merriweather({ subsets: ["latin"], weight: ["400","700","900"], style: ["normal","italic"], variable: "--font-hero", display: "swap" });
 
 export const metadata = {
   title: "ORTECH Infra Pvt Ltd — Telecom, HDD, CGD, Civil & Electrical Infrastructure",
@@ -18,7 +19,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${display.variable}`}>
+    <html lang="en" className={`${inter.variable} ${display.variable} ${hero.variable}`}>
       <body>
         <Navbar />
         <main className="min-h-screen">{children}</main>

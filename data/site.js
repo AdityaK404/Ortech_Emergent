@@ -22,10 +22,10 @@ export const company = {
 };
 
 export const heroStats = [
-  { value: "23+", label: "Years of engineering excellence" },
-  { value: "100+", label: "Completed projects across India" },
-  { value: "1000+ km", label: "Utility & telecom infrastructure delivered" },
-  { value: "200+", label: "Skilled workforce on rolls" },
+  { value: "3000+ Kms", label: "OFC Laid" },
+  { value: "200+", label: "BTS & RTTS Tower Stations Constructed" },
+  { value: "7 States, 25+ Clients", label: "include Private and Government" },
+  { value: "20+", label: "Civil Projects" },
 ];
 
 export const trustedClients = [

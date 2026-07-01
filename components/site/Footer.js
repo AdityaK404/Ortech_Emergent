@@ -17,7 +17,7 @@ const corporateLinks = [
 export default function Footer() {
   return (
     <footer className="bg-ink text-white/85">
-      <div className="container-x py-20 grid grid-cols-1 md:grid-cols-12 gap-12">
+      <div className="container-x pt-8 pb-20 grid grid-cols-1 md:grid-cols-12 gap-12">
         <div className="md:col-span-5">
           <div className="flex items-center gap-3">
             <img src={LOGO_URL} alt="ORTECH" className="h-11 w-11 object-contain" />

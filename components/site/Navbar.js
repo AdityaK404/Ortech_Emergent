@@ -23,8 +23,8 @@ export default function Navbar() {
         scrolled ? "border-b border-neutral-200 shadow-sm" : "border-b border-transparent"
       )}
     >
-      <div className="container-x flex items-center justify-between h-[92px]">
-        <Link href="/" className="flex items-center gap-4 group">
+      <div className="flex items-center justify-between h-[92px] w-full">
+        <Link href="/" className="flex items-center gap-4 group pl-4 md:pl-6 shrink-0">
           <img src={LOGO_URL} alt="ORTECH" className="h-16 w-16 object-contain" />
           <div className="leading-tight flex flex-col items-start">
             <img
@@ -42,7 +42,7 @@ export default function Navbar() {
           </div>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden lg:flex flex-1 items-center justify-center gap-1">
           {navItems.map((n) => (
             <Link
               key={n.href}
@@ -54,14 +54,14 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3 pr-4 md:pr-6 shrink-0">
           <Link href="/contact" className="btn-primary whitespace-nowrap">
             Request a Project
             <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
 
-        <button className="lg:hidden p-2 -mr-2 text-neutral-900" onClick={() => setOpen((o) => !o)} aria-label="Toggle menu">
+        <button className="lg:hidden p-2 pr-4 md:pr-6 text-neutral-900" onClick={() => setOpen((o) => !o)} aria-label="Toggle menu">
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>

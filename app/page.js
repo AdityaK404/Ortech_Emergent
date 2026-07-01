@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import SectionHeader from "@/components/site/SectionHeader";
-import { services, milestones, heroStats, allClients } from "@/data/site";
+import { services, milestones, heroStats } from "@/data/site";
+import { getClientLogoImages } from "@/lib/clientLogos";
 
-const HERO = "https://images.unsplash.com/photo-1559510981-10719ce4266a";
+const HERO = "/home-banner.jpg";
 const PROCESS = [
   { n: "01", title: "Survey & Planning", body: "Route survey, GPS mapping, ROW planning and utility locating — before a single trench is opened." },
   { n: "02", title: "HDD or Open-Cut", body: "Owned 5-rig HDD fleet for trenchless crossings; open-cut trenching for greenfield corridors." },
@@ -18,6 +19,9 @@ const SERVICE_AREAS = [
 ];
 
 export default function Home() {
+  const clientLogos = getClientLogoImages();
+  const marqueeLogos = clientLogos.length ? [...clientLogos, ...clientLogos] : [];
+
   return (
     <>
       {/* ========== HERO ========== */}
@@ -27,26 +31,21 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/30" />
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent" />
         </div>
-        <div className="relative container-x pt-24 pb-28 md:pt-32 md:pb-36 text-white">
+        <div className="relative container-x pt-20 pb-20 md:pt-24 md:pb-24 text-white">
           <div className="fade-up max-w-4xl">
-            <h1 className="font-display text-[44px] md:text-[76px] leading-[0.98] tracking-tight text-balance">
-              Telecom & Utility Infrastructure Contractors That Deliver <span className="text-accent">On Time, Every Time</span>
+            <h1 className="font-hero text-[40px] md:text-[68px] leading-[1.08] tracking-tight text-balance">
+              Telecom & Township Digital Infrastructure <br></br><span className="text-accent">Built with Precision and Reliability</span>
             </h1>
-            <p className="mt-8 text-base md:text-lg leading-relaxed text-white/70 max-w-2xl text-pretty">
-              Turnkey OFC, HDD, City Gas Distribution, Civil and Electrical infrastructure for telecom
-              operators, EPC majors and government bodies across India. Engineering precision met with
-              heavy-duty execution since 2000.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/contact" className="btn-primary">Request a Project <ArrowRight className="h-4 w-4" /></Link>
               <Link href="/projects" className="btn-outline-dark">View Our Projects</Link>
             </div>
           </div>
         </div>
-        <div className="relative border-t border-ink-3">
-          <div className="container-x grid grid-cols-2 md:grid-cols-4">
+        <div className="relative">
+          <div className="container-x grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
             {heroStats.map((s, i) => (
-              <div key={s.label} className={`py-8 md:py-10 ${i !== 0 ? "md:border-l border-ink-3" : ""} ${i % 2 !== 0 ? "border-l border-ink-3 md:border-l" : ""}`}>
+              <div key={s.label} className="py-6 md:py-8 flex flex-col items-center text-center">
                 <div className="font-display text-3xl md:text-4xl text-white">{s.value}</div>
                 <div className="mt-2 text-[11px] tracking-[0.14em] uppercase text-white/50 max-w-[220px] leading-relaxed">{s.label}</div>
               </div>
@@ -119,7 +118,7 @@ export default function Home() {
       </section>
 
       {/* ========== TRUSTED-BY MARQUEE ========== */}
-      <section className="bg-background border-y border-neutral-200 overflow-hidden">
+      <section className="bg-background border-y border-neutral-200 overflow-hidden pb-16 md:pb-20">
         <div className="container-x pt-16 md:pt-20">
           <div className="text-center max-w-3xl mx-auto">
             <div className="eyebrow">Reliability Built on Trust</div>
@@ -128,20 +127,23 @@ export default function Home() {
             </h2>
           </div>
         </div>
-        <div className="mt-14 pb-16 md:pb-20 relative">
-          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
-          <div className="flex w-max animate-marquee">
-            {[...allClients, ...allClients].map((c, i) => (
-              <div key={i} className="flex items-center px-10 md:px-14 shrink-0">
-                <span className="font-display text-4xl md:text-6xl uppercase tracking-tight text-neutral-900 whitespace-nowrap">
-                  {c}
-                </span>
-                <span className="ml-10 md:ml-14 h-3 w-3 rotate-45 bg-accent shrink-0" />
-              </div>
-            ))}
+        {marqueeLogos.length > 0 && (
+          <div className="mt-14 relative">
+            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
+            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
+            <div className="flex w-max animate-marquee items-center">
+              {marqueeLogos.map((src, i) => (
+                <div key={`${src}-${i}`} className="flex items-center px-8 md:px-12 shrink-0">
+                  <img
+                    src={src}
+                    alt=""
+                    className="h-12 md:h-16 w-auto max-w-[160px] md:max-w-[200px] object-contain opacity-80"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </section>
 
       {/* ========== INLINE QUOTE FORM ========== */}
@@ -185,7 +187,7 @@ export default function Home() {
 
       {/* ========== FINAL CTA ========== */}
       <section className="bg-ink text-white">
-        <div className="container-x py-20 md:py-28 text-center">
+        <div className="container-x pt-20 pb-4 md:pt-28 md:pb-4 text-center">
           <h2 className="font-display text-[32px] md:text-[52px] leading-[1.05] tracking-tight text-balance max-w-3xl mx-auto">
             Ready to Start Your Rollout?
           </h2>
