@@ -204,7 +204,7 @@ export default function Home() {
 
 const SERVICE_IMGS = [
   "https://images.unsplash.com/photo-1533664488202-6af66d26c44a",
-  "https://images.unsplash.com/photo-1759579478942-a6992a87fb8f",
+  "/HDD.jpg",
   "https://images.unsplash.com/photo-1559510981-10719ce4266a",
   "https://images.unsplash.com/photo-1772600110243-f4e1349259b6",
   "https://images.unsplash.com/photo-1509390144018-eeaf65052242",
