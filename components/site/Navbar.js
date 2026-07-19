@@ -1,13 +1,38 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
-import { navItems, moreNavItems, LOGO_URL, WORDMARKS } from "@/data/site";
+import { Menu, X, ArrowRight } from "lucide-react";
+import { navItems, LOGO_URL, WORDMARKS, company } from "@/data/site";
 import { cn } from "@/lib/utils";
+
+function Wordmark({ dark = false }) {
+  const invert = dark ? { filter: "invert(1)", mixBlendMode: "screen" } : { mixBlendMode: "multiply" };
+  return (
+    <Link href="/" className="flex items-center gap-3.5 group shrink-0">
+      <img src={LOGO_URL} alt={company.name} className="h-12 w-12 object-contain" />
+      <span className="leading-none flex flex-col items-start">
+        <img
+          src={WORDMARKS.ortech}
+          alt="ORTECH"
+          className="h-[22px] w-auto object-contain select-none"
+          style={invert}
+          draggable="false"
+        />
+        <span className="mt-1.5 flex items-center gap-2">
+          <img src={WORDMARKS.infra} alt="INFRA" className="h-[9px] w-auto object-contain" style={invert} draggable="false" />
+          <img src={WORDMARKS.pvt} alt="PVT" className="h-[9px] w-auto object-contain" style={invert} draggable="false" />
+          <img src={WORDMARKS.ltd} alt="LTD" className="h-[9px] w-auto object-contain" style={invert} draggable="false" />
+        </span>
+      </span>
+    </Link>
+  );
+}
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -16,111 +41,63 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => setOpen(false), [pathname]);
+
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 transition-all duration-300 bg-background",
-        scrolled ? "border-b border-neutral-200 shadow-sm" : "border-b border-transparent"
+        "sticky top-0 z-50 transition-all duration-300 bg-white",
+        scrolled ? "border-b border-border shadow-[0_1px_0_rgba(0,0,0,0.04)]" : "border-b border-transparent"
       )}
     >
-      <div className="flex items-center justify-between h-[92px] w-full">
-        <Link href="/" className="flex items-center gap-4 group pl-4 md:pl-6 shrink-0">
-          <img src={LOGO_URL} alt="ORTECH" className="h-16 w-16 object-contain" />
-          <div className="leading-tight flex flex-col items-start">
-            <img
-              src={WORDMARKS.ortech}
-              alt="ORTECH"
-              className="h-[26px] w-auto object-contain select-none"
-              style={{ mixBlendMode: "multiply" }}
-              draggable="false"
-            />
-            <div className="mt-1.5 flex items-center gap-2">
-              <img src={WORDMARKS.infra} alt="INFRA" className="h-[10px] w-auto object-contain" style={{ mixBlendMode: "multiply" }} draggable="false" />
-              <img src={WORDMARKS.pvt} alt="PVT" className="h-[10px] w-auto object-contain" style={{ mixBlendMode: "multiply" }} draggable="false" />
-              <img src={WORDMARKS.ltd} alt="LTD" className="h-[10px] w-auto object-contain" style={{ mixBlendMode: "multiply" }} draggable="false" />
-            </div>
-          </div>
-        </Link>
+      <div className="container-x flex items-center justify-between h-[76px]">
+        <Wordmark />
 
-        <nav className="hidden lg:flex flex-1 items-center justify-center gap-1">
-          {navItems.map((n) => (
-            <Link
-              key={n.href}
-              href={n.href}
-              className="text-[12px] font-semibold uppercase tracking-[0.12em] text-neutral-700 hover:text-neutral-900 px-3 py-2 transition-colors"
-            >
-              {n.label}
-            </Link>
-          ))}
-
-          <div className="group relative">
-            <button
-              type="button"
-              className="flex items-center gap-1 text-[12px] font-semibold uppercase tracking-[0.12em] text-neutral-700 hover:text-neutral-900 px-3 py-2 transition-colors"
-            >
-              More
-              <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180" />
-            </button>
-            <div className="invisible absolute left-1/2 top-full z-50 w-48 -translate-x-1/2 pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-              <div className="overflow-hidden border border-neutral-200 bg-white shadow-lg">
-                {moreNavItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="block px-4 py-3 text-[12px] font-semibold uppercase tracking-[0.12em] text-neutral-700 hover:bg-neutral-50 hover:text-neutral-900"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
+        <nav className="hidden lg:flex items-center gap-1">
+          {navItems.map((n) => {
+            const active = pathname === n.href;
+            return (
+              <Link
+                key={n.href}
+                href={n.href}
+                className={cn(
+                  "relative text-[12px] font-semibold uppercase tracking-[0.1em] px-3.5 py-2 transition-colors",
+                  active ? "text-navy-900" : "text-steel hover:text-navy-900"
+                )}
+              >
+                {n.label}
+                {active && <span className="absolute left-3.5 right-3.5 -bottom-0.5 h-[2px] bg-accent" />}
+              </Link>
+            );
+          })}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-3 pr-4 md:pr-6 shrink-0">
+        <div className="hidden lg:flex items-center gap-3 shrink-0">
           <Link href="/contact" className="btn-primary whitespace-nowrap">
-            Request a Project
-            <ArrowRight className="h-3.5 w-3.5" />
+            Request a project <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
 
-        <button className="lg:hidden p-2 pr-4 md:pr-6 text-neutral-900" onClick={() => setOpen((o) => !o)} aria-label="Toggle menu">
+        <button className="lg:hidden p-2 text-navy-900" onClick={() => setOpen((o) => !o)} aria-label="Toggle menu" aria-expanded={open}>
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 
       {open && (
-        <div className="lg:hidden border-t border-neutral-200 bg-background">
+        <div className="lg:hidden border-t border-border bg-white">
           <div className="container-x py-4 flex flex-col">
             {navItems.map((n) => (
               <Link
                 key={n.href}
                 href={n.href}
-                onClick={() => setOpen(false)}
-                className="py-3 border-b border-neutral-200 text-[13px] uppercase tracking-[0.12em] text-neutral-800 font-semibold flex items-center justify-between"
+                className="py-3.5 border-b border-border text-[13px] uppercase tracking-[0.1em] text-navy-900 font-semibold flex items-center justify-between"
               >
                 {n.label}
                 <ArrowRight className="h-4 w-4 text-accent" />
               </Link>
             ))}
-            <div className="py-3 border-b border-neutral-200">
-              <div className="text-[13px] uppercase tracking-[0.12em] text-neutral-500 font-semibold">More</div>
-              <div className="mt-3 flex flex-col gap-2">
-                {moreNavItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className="flex items-center justify-between rounded-md border border-neutral-200 px-4 py-3 text-[13px] uppercase tracking-[0.12em] text-neutral-800 font-semibold"
-                  >
-                    {item.label}
-                    <ArrowRight className="h-4 w-4 text-accent" />
-                  </Link>
-                ))}
-              </div>
-            </div>
-            <Link href="/contact" onClick={() => setOpen(false)} className="mt-4 btn-primary">
-              Request a Project
+            <Link href="/contact" className="mt-5 btn-primary">
+              Request a project <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
         </div>

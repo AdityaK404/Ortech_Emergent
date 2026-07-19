@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { CheckCircle2, ArrowUpRight } from "lucide-react";
-import SectionHeader from "@/components/site/SectionHeader";
-import { services } from "@/data/site";
-import { PageHero, CTAStrip } from "../about/page";
+import { ArrowUpRight, Check } from "lucide-react";
+import PageHero from "@/components/site/PageHero";
+import CTAStrip from "@/components/site/CTAStrip";
+import { services, images } from "@/data/site";
 
-export const metadata = { title: "Services — ORTECH Infra Pvt Ltd" };
+export const metadata = { title: "Services" };
 
 export default function ServicesPage() {
   return (
@@ -12,35 +12,53 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Services"
         title="Six discipline lines. One accountable delivery model."
-        kicker="Owned plant, in-house engineering, and a single P&L for every package — enabling direct accountability for cost, schedule and safety on every package we sign."
-        image="https://images.pexels.com/photos/3818947/pexels-photo-3818947.jpeg"
+        kicker="Owned plant, in-house engineering and a single point of accountability for cost, schedule and safety on every package we sign."
+        image={images.servicesHero}
       />
-      <section className="container-x py-24 space-y-24">
+
+      {/* Sticky anchor sub-nav */}
+      <div className="sticky top-[76px] z-30 bg-white/95 backdrop-blur border-b border-border">
+        <div className="container-x flex gap-1 overflow-x-auto py-3 no-scrollbar">
+          {services.map((s) => (
+            <Link
+              key={s.slug}
+              href={`#${s.slug}`}
+              className="whitespace-nowrap text-[11px] font-semibold uppercase tracking-[0.1em] text-steel hover:text-navy-900 px-3 py-1.5 transition-colors"
+            >
+              {s.title.replace(/\s*\(.*\)/, "")}
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      <section className="container-x section-pad space-y-20 md:space-y-28">
         {services.map((s, i) => (
-          <div key={s.slug} id={s.slug} className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-            <div className="lg:col-span-1 font-serif text-5xl text-accent/40">{String(i + 1).padStart(2, "0")}</div>
-            <div className="lg:col-span-7">
-              <h2 className="font-serif text-3xl md:text-4xl text-primary leading-tight">{s.title}</h2>
-              <p className="mt-4 text-muted-foreground leading-relaxed max-w-2xl">{s.summary}</p>
-              <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div key={s.slug} id={s.slug} className="scroll-mt-40 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div className={i % 2 === 1 ? "lg:order-2" : ""}>
+              <div className="aspect-[4/3] overflow-hidden bg-secondary">
+                <img src={s.image} alt={s.title} className="h-full w-full object-cover" />
+              </div>
+            </div>
+            <div className={i % 2 === 1 ? "lg:order-1" : ""}>
+              <div className="font-display font-semibold text-5xl text-navy-900/12">{String(i + 1).padStart(2, "0")}</div>
+              <h2 className="mt-3 font-display font-semibold text-[clamp(1.6rem,2.6vw,2.25rem)] text-navy-900 leading-tight tracking-[-0.02em]">{s.title}</h2>
+              <p className="mt-4 text-muted-foreground leading-relaxed">{s.summary}</p>
+              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
                 {s.bullets.map((b) => (
-                  <div key={b} className="flex items-start gap-3 text-sm border-l-2 border-accent pl-4 py-1">
-                    <span className="text-foreground/85">{b}</span>
+                  <div key={b} className="flex items-start gap-3 text-sm">
+                    <Check className="h-4 w-4 text-accent shrink-0 mt-0.5" />
+                    <span className="text-navy-900/85">{b}</span>
                   </div>
                 ))}
               </div>
-            </div>
-            <div className="lg:col-span-4 bg-secondary/60 border border-border p-8">
-              <div className="eyebrow"><span className="accent-rule"></span>Engage</div>
-              <div className="mt-3 font-serif text-xl text-primary">Have a package in this discipline?</div>
-              <p className="mt-3 text-sm text-muted-foreground">Share scope and our pre-construction team will respond with referenceable projects and a fit assessment.</p>
-              <Link href="/contact" className="mt-6 inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-3 text-[11px] tracking-[0.2em] uppercase">
-                Discuss with team <ArrowUpRight className="h-3.5 w-3.5" />
+              <Link href="/contact" className="mt-8 link-accent">
+                Discuss this discipline <ArrowUpRight className="h-3.5 w-3.5" />
               </Link>
             </div>
           </div>
         ))}
       </section>
+
       <CTAStrip />
     </>
   );

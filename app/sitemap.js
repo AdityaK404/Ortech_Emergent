@@ -1,14 +1,4 @@
-const routes = [
-  "/",
-  "/about",
-  "/services",
-  "/projects",
-  "/machinery",
-  "/clients",
-  "/credentials",
-  "/careers",
-  "/contact",
-];
+const routes = ["/", "/about", "/services", "/projects", "/clients", "/contact"];
 
 export default function sitemap() {
   const baseUrl = "https://www.ortechinfra.com";

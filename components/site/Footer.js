@@ -1,27 +1,30 @@
 import Link from "next/link";
-import { company, LOGO_URL, WORDMARKS } from "@/data/site";
+import { company, LOGO_URL, WORDMARKS, getYearsInOperation } from "@/data/site";
 
-const serviceRegions = [
-  { label: "Belagavi", href: "/clients" },
-  { label: "Karnataka", href: "/projects" },
-  { label: "Maharashtra", href: "/projects" },
-  { label: "Uttara Kannada", href: "/projects" },
+const serviceLinks = [
+  { label: "Telecom / OFC", href: "/services#telecom-infrastructure" },
+  { label: "HDD (Trenchless)", href: "/services#horizontal-directional-drilling" },
+  { label: "City Gas (CGD)", href: "/services#city-gas-distribution" },
+  { label: "Civil & Electrical", href: "/services#civil-infrastructure" },
 ];
+
 const corporateLinks = [
   { label: "About Us", href: "/about" },
-  { label: "Credentials", href: "/credentials" },
-  { label: "Careers", href: "/careers" },
+  { label: "Credentials", href: "/about#credentials" },
+  { label: "Machinery", href: "/about#machinery" },
+  { label: "Projects", href: "/projects" },
+  { label: "Clients", href: "/clients" },
   { label: "Contact", href: "/contact" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-ink text-white/85">
-      <div className="container-x pt-8 pb-20 grid grid-cols-1 md:grid-cols-12 gap-12">
+    <footer className="bg-navy-950 text-white/80">
+      <div className="container-x pt-16 pb-14 grid grid-cols-1 md:grid-cols-12 gap-12">
         <div className="md:col-span-5">
           <div className="flex items-center gap-3">
-            <img src={LOGO_URL} alt="ORTECH" className="h-11 w-11 object-contain" />
-            <div className="flex flex-col items-start">
+            <img src={LOGO_URL} alt={company.name} className="h-11 w-11 object-contain" />
+            <span className="leading-none flex flex-col items-start">
               <img
                 src={WORDMARKS.ortech}
                 alt="ORTECH"
@@ -29,65 +32,52 @@ export default function Footer() {
                 style={{ filter: "invert(1)", mixBlendMode: "screen" }}
                 draggable="false"
               />
-              <div className="mt-1 flex items-center gap-1.5">
+              <span className="mt-1 flex items-center gap-1.5">
                 <img src={WORDMARKS.infra} alt="INFRA" className="h-[8px] w-auto object-contain opacity-90" style={{ filter: "invert(1)", mixBlendMode: "screen" }} draggable="false" />
                 <img src={WORDMARKS.pvt} alt="PVT" className="h-[8px] w-auto object-contain opacity-90" style={{ filter: "invert(1)", mixBlendMode: "screen" }} draggable="false" />
                 <img src={WORDMARKS.ltd} alt="LTD" className="h-[8px] w-auto object-contain opacity-90" style={{ filter: "invert(1)", mixBlendMode: "screen" }} draggable="false" />
-              </div>
-            </div>
+              </span>
+            </span>
           </div>
-          <p className="mt-6 text-sm leading-relaxed text-white/60 max-w-md">
-            India's specialist Telecom, HDD, CGD, Civil and Electrical infrastructure contractor.
-            Delivering heavy underground infrastructure with engineering precision since 2000.
+          <p className="mt-6 text-sm leading-relaxed text-white/55 max-w-md">
+            India&apos;s specialist Telecom, HDD, CGD, Civil and Electrical infrastructure
+            contractor — delivering heavy underground infrastructure with engineering
+            precision since {company.founded}.
           </p>
-          <div className="mt-8 space-y-2 text-[13px] text-white/70">
+          <div className="mt-8 space-y-2 text-[13px] text-white/65">
             <div>{company.address}</div>
-            <div>{company.email}</div>
-            <div>{company.phone}</div>
+            <div><a href={`mailto:${company.email}`} className="hover:text-accent transition-colors">{company.email}</a></div>
+            <div><a href={`tel:${company.phone.replace(/\s/g, "")}`} className="hover:text-accent transition-colors">{company.phone}</a></div>
           </div>
+        </div>
+
+        <div className="md:col-span-3 md:col-start-7">
+          <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">Services</div>
+          <ul className="mt-6 space-y-3">
+            {serviceLinks.map((n) => (
+              <li key={n.label}>
+                <Link href={n.href} className="text-sm text-white/80 hover:text-accent transition-colors">{n.label}</Link>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="md:col-span-3">
-          <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/50">Service Regions</div>
-          <ul className="mt-6 space-y-3">
-            {serviceRegions.map((n) => (
-              <li key={n.label}>
-                <Link href={n.href} className="text-sm text-white/85 hover:text-accent transition-colors">{n.label}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="md:col-span-2">
-          <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/50">Corporate</div>
+          <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">Company</div>
           <ul className="mt-6 space-y-3">
             {corporateLinks.map((n) => (
               <li key={n.href}>
-                <Link href={n.href} className="text-sm text-white/85 hover:text-accent transition-colors">{n.label}</Link>
+                <Link href={n.href} className="text-sm text-white/80 hover:text-accent transition-colors">{n.label}</Link>
               </li>
             ))}
-          </ul>
-        </div>
-
-        <div className="md:col-span-2">
-          <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/50">Services</div>
-          <ul className="mt-6 space-y-3 text-sm text-white/85">
-            <li><Link href="/services" className="hover:text-accent">Telecom / OFC</Link></li>
-            <li><Link href="/services" className="hover:text-accent">HDD</Link></li>
-            <li><Link href="/services" className="hover:text-accent">City Gas (CGD)</Link></li>
-            <li><Link href="/services" className="hover:text-accent">Civil / Electrical</Link></li>
           </ul>
         </div>
       </div>
 
-      <div className="border-t border-ink-3">
-        <div className="container-x py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-[12px] text-white/50">
-          <div>© {new Date().getFullYear()} {company.name}. Proudly built in Belagavi.</div>
-          <div className="flex items-center gap-6">
-            <span>Terms of Service</span>
-            <span>Privacy</span>
-            <span>Accessibility</span>
-          </div>
+      <div className="border-t border-navy-line">
+        <div className="container-x py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-[12px] text-white/45">
+          <div>© {new Date().getFullYear()} {company.name}. {getYearsInOperation()} years of infrastructure delivery.</div>
+          <div>Belagavi, Karnataka · India</div>
         </div>
       </div>
     </footer>
