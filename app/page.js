@@ -23,23 +23,23 @@ export default function Home() {
       <section className="relative overflow-hidden bg-navy-950">
         <div className="absolute inset-0">
           <Image src={images.homeHero} alt="" fill priority sizes="100vw" className="object-cover opacity-30 animate-slow-zoom" />
-          <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/90 to-navy-900/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-950/80 to-navy-900/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-transparent to-transparent" />
         </div>
-        <div className="relative container-x pt-24 pb-20 md:pt-32 md:pb-28 text-white">
+        <div className="relative container-x pt-16 pb-14 md:pt-32 md:pb-28 text-white">
           <div className="fade-up max-w-4xl">
             <div className="eyebrow">Telecom · HDD · CGD · Civil · Electrical</div>
             <h1 className="mt-6 font-display font-semibold text-[clamp(2.6rem,5.5vw,4.5rem)] leading-[1.04] tracking-[-0.03em] text-balance">
               Digital & utility infrastructure,<br />
               <span className="text-accent">built with precision.</span>
             </h1>
-            <p className="mt-7 max-w-xl text-white/70 text-[16px] leading-relaxed">
+            <p className="mt-6 md:mt-7 max-w-xl text-white/70 text-[15px] md:text-[16px] leading-relaxed">
               An infrastructure engineering and execution company delivering turnkey telecom,
               trenchless and utility networks for India&apos;s operators, EPC majors and government bodies since 2000.
             </p>
-            <div className="mt-9 flex flex-wrap gap-4">
-              <Link href="/contact" className="btn-accent">Discuss your project <ArrowRight className="h-4 w-4" /></Link>
-              <Link href="/projects" className="btn-on-dark">View our projects</Link>
+            <div className="mt-8 md:mt-9 flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <Link href="/contact" className="btn-accent w-full sm:w-auto">Discuss your project <ArrowRight className="h-4 w-4" /></Link>
+              <Link href="/projects" className="btn-on-dark w-full sm:w-auto">View our projects</Link>
             </div>
           </div>
         </div>
@@ -47,13 +47,13 @@ export default function Home() {
 
       {/* STATS BAR */}
       <section className="bg-white border-b border-border">
-        <div className="container-x grid grid-cols-2 md:grid-cols-4 divide-x divide-border">
+        <div className="container-x grid grid-cols-2 md:grid-cols-4 md:divide-x md:divide-border">
           {heroStats.map((s) => (
-            <div key={s.label} className="py-8 md:py-10 px-5 md:px-8 text-center">
-              <div className="font-display font-semibold text-navy-900 text-[34px] md:text-[46px] leading-none tabular">
-                {s.value}{s.unit && <span className="text-[18px] md:text-[22px] ml-1 text-steel">{s.unit}</span>}
+            <div key={s.label} className="py-6 md:py-10 px-3 md:px-8 text-center">
+              <div className="font-display font-semibold text-navy-900 text-[30px] md:text-[46px] leading-none tabular">
+                {s.value}{s.unit && <span className="text-[16px] md:text-[22px] ml-1 text-steel">{s.unit}</span>}
               </div>
-              <div className="mt-3 text-[11px] tracking-[0.12em] uppercase text-steel leading-relaxed max-w-[200px] mx-auto">{s.label}</div>
+              <div className="mt-2.5 md:mt-3 text-[10px] md:text-[11px] tracking-[0.12em] uppercase text-steel leading-relaxed max-w-[200px] mx-auto">{s.label}</div>
             </div>
           ))}
         </div>
@@ -159,11 +159,11 @@ export default function Home() {
       {/* CREDENTIALS STRIP */}
       <section className="bg-navy-900 text-white">
         <div className="container-x py-14 md:py-16">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-6">
             {CREDENTIAL_STRIP.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-4">
-                <Icon className="h-7 w-7 text-accent shrink-0" />
-                <span className="text-sm font-semibold leading-snug">{label}</span>
+              <div key={label} className="flex flex-col sm:flex-row items-start sm:items-center gap-2.5 sm:gap-4">
+                <Icon className="h-6 w-6 md:h-7 md:w-7 text-accent shrink-0" />
+                <span className="text-[13px] md:text-sm font-semibold leading-snug">{label}</span>
               </div>
             ))}
           </div>
@@ -185,7 +185,7 @@ export default function Home() {
           <p className="mt-5 text-white/60 max-w-xl mx-auto leading-relaxed">
             Partner with a specialist who owns the plant, retains the crews, and accepts accountability from survey to commissioned link.
           </p>
-          <div className="mt-9 flex flex-wrap justify-center items-center gap-4">
+          <div className="mt-9 flex flex-col sm:flex-row flex-wrap justify-center items-stretch sm:items-center gap-3 sm:gap-4 max-w-md sm:max-w-none mx-auto">
             <Link href="/contact" className="btn-accent">Request a quote <ArrowRight className="h-4 w-4" /></Link>
             <Link href="/contact" className="btn-on-dark">Speak with an engineer</Link>
           </div>

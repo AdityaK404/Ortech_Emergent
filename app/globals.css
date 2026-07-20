@@ -42,6 +42,7 @@
     font-family: var(--font-inter), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip; /* full-bleed sections and the marquee must never cause sideways scroll on phones */
   }
   /* Match the comfortable scale of ~120% browser zoom on pointer devices with
      room to spare, so wide screens don't leave large side gaps. Touch devices
@@ -64,8 +65,8 @@
   .tabular { font-variant-numeric: tabular-nums; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   .no-scrollbar::-webkit-scrollbar { display: none; }
-  .container-x { @apply mx-auto w-full max-w-[1240px] px-6 md:px-10; }
-  .section-pad { @apply py-20 md:py-28; }
+  .container-x { @apply mx-auto w-full max-w-[1240px] px-5 md:px-10; }
+  .section-pad { @apply py-14 md:py-28; }
 
   /* Brand navy backgrounds */
   .bg-navy-950 { background-color: hsl(var(--navy-950)); }
@@ -145,7 +146,6 @@
   to { transform: translateX(-50%); }
 }
 .animate-marquee { animation: marquee-x 40s linear infinite; }
-.animate-marquee:hover { animation-play-state: paused; }
 
 @media (prefers-reduced-motion: reduce) {
   .animate-slow-zoom, .fade-up, .animate-marquee { animation: none; }

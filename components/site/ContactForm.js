@@ -112,7 +112,8 @@ function Field({ label, required, error, children }) {
 }
 
 function inputCls(error) {
-  return `w-full bg-white border px-4 py-3 text-sm text-navy-900 placeholder:text-steel/60 outline-none transition-colors focus:border-navy-900 ${
+  // text-base on mobile prevents iOS Safari's zoom-on-focus (fires below 16px).
+  return `w-full bg-white border px-4 py-3 text-base md:text-sm text-navy-900 placeholder:text-steel/60 outline-none transition-colors focus:border-navy-900 ${
     error ? "border-destructive" : "border-border"
   }`;
 }

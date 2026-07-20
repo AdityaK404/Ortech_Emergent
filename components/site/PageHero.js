@@ -17,13 +17,13 @@ export default function PageHero({ eyebrow, title, kicker, image }) {
           <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/85 to-navy-900/40" />
         </div>
       )}
-      <div className="relative container-x pt-24 pb-16 md:pt-32 md:pb-24">
+      <div className="relative container-x pt-14 pb-12 md:pt-32 md:pb-24">
         {eyebrow && <div className="eyebrow">{eyebrow}</div>}
-        <h1 className="mt-5 font-display text-[clamp(2.2rem,5vw,3.75rem)] font-semibold leading-[1.05] tracking-[-0.02em] max-w-4xl text-balance">
+        <h1 className="mt-4 md:mt-5 font-display text-[clamp(1.9rem,5vw,3.75rem)] font-semibold leading-[1.08] md:leading-[1.05] tracking-[-0.02em] max-w-4xl text-balance">
           {title}
         </h1>
         {kicker && (
-          <p className="mt-6 max-w-2xl text-white/70 text-pretty text-[15px] leading-relaxed">{kicker}</p>
+          <p className="mt-5 md:mt-6 max-w-2xl text-white/70 text-pretty text-[14px] md:text-[15px] leading-relaxed">{kicker}</p>
         )}
       </div>
     </section>

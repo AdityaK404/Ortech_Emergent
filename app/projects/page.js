@@ -24,12 +24,12 @@ export default function ProjectsPage() {
 
       {/* Filter bar */}
       <section className="sticky top-[76px] z-30 bg-white/95 backdrop-blur border-b border-border">
-        <div className="container-x py-4 flex flex-wrap items-center gap-2">
+        <div className="container-x py-3 md:py-4 flex md:flex-wrap items-center gap-2 overflow-x-auto no-scrollbar">
           {projectCategories.map((c) => (
             <button
               key={c}
               onClick={() => setCat(c)}
-              className={`text-[11px] font-semibold tracking-[0.1em] uppercase px-4 py-2 border transition-colors ${
+              className={`shrink-0 text-[11px] font-semibold tracking-[0.1em] uppercase px-4 py-2 border transition-colors ${
                 cat === c
                   ? "bg-navy-900 text-white border-navy-900"
                   : "bg-white text-steel border-border hover:border-navy-900"

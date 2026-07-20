@@ -14,7 +14,7 @@ export default function CTAStrip({
           {title}
         </h2>
         <p className="mt-5 text-white/60 max-w-xl mx-auto leading-relaxed">{body}</p>
-        <div className="mt-9 flex flex-wrap justify-center items-center gap-4">
+        <div className="mt-9 flex flex-col sm:flex-row flex-wrap justify-center items-stretch sm:items-center gap-3 sm:gap-4 max-w-md sm:max-w-none mx-auto">
           <Link href="/contact" className="btn-accent">
             Request a quote <ArrowRight className="h-4 w-4" />
           </Link>

@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, Phone } from "lucide-react";
 import { navItems, LOGO_URL, WORDMARKS, company } from "@/data/site";
 import { cn } from "@/lib/utils";
 
@@ -84,21 +84,32 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div className="lg:hidden border-t border-border bg-white">
+        <div className="lg:hidden border-t border-border bg-white max-h-[calc(100dvh-76px)] overflow-y-auto">
           <div className="container-x py-4 flex flex-col">
-            {navItems.map((n) => (
-              <Link
-                key={n.href}
-                href={n.href}
-                className="py-3.5 border-b border-border text-[13px] uppercase tracking-[0.1em] text-navy-900 font-semibold flex items-center justify-between"
-              >
-                {n.label}
-                <ArrowRight className="h-4 w-4 text-accent" />
+            {navItems.map((n) => {
+              const active = pathname === n.href;
+              return (
+                <Link
+                  key={n.href}
+                  href={n.href}
+                  className={cn(
+                    "py-4 border-b border-border text-[13px] uppercase tracking-[0.1em] font-semibold flex items-center justify-between",
+                    active ? "text-accent" : "text-navy-900"
+                  )}
+                >
+                  {n.label}
+                  <ArrowRight className={cn("h-4 w-4", active ? "text-accent" : "text-steel")} />
+                </Link>
+              );
+            })}
+            <div className="mt-5 mb-2 grid grid-cols-1 gap-3">
+              <Link href="/contact" className="btn-primary w-full">
+                Request a project <ArrowRight className="h-3.5 w-3.5" />
               </Link>
-            ))}
-            <Link href="/contact" className="mt-5 btn-primary">
-              Request a project <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
+              <a href={`tel:${company.phone.replace(/\s/g, "")}`} className="btn-outline w-full">
+                <Phone className="h-3.5 w-3.5" /> Call {company.phone}
+              </a>
+            </div>
           </div>
         </div>
       )}

@@ -13,7 +13,7 @@ export default function ClientMarquee({ logos = [] }) {
             <img
               src={src}
               alt=""
-              className="h-12 md:h-16 w-auto max-w-[150px] md:max-w-[190px] object-contain opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+              className="h-12 md:h-16 w-auto max-w-[150px] md:max-w-[190px] object-contain"
             />
           </div>
         ))}
