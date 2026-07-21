@@ -12,6 +12,10 @@ const CREDENTIAL_STRIP = [
   { icon: Award, label: "EPC Empanelled — L&T, MEIL" },
 ];
 
+// Soft, layered shadow shared with the Clients page floating cards.
+const CARD_SHADOW = "shadow-[0_1px_2px_rgba(11,31,51,0.05),0_10px_28px_rgba(11,31,51,0.08)]";
+const CARD_SHADOW_HOVER = "hover:shadow-[0_16px_40px_rgba(11,31,51,0.16)]";
+
 export default function Home() {
   const clientLogos = getClientLogoImages();
   const featured = projects.slice(0, 3);
@@ -83,18 +87,26 @@ export default function Home() {
             </div>
             <Link href="/services" className="link-accent shrink-0">All services <ArrowRight className="h-3.5 w-3.5" /></Link>
           </div>
-          <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7">
             {services.map((s) => (
-              <Link key={s.slug} href={`/services#${s.slug}`} className="group bg-white border border-border hover:border-navy-900/25 hover:shadow-sm transition-all">
-                <div className="aspect-[16/10] overflow-hidden">
-                  <img src={s.image} alt={s.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <Link
+                key={s.slug}
+                href={`/services#${s.slug}`}
+                className={`group flex flex-col bg-white rounded-2xl overflow-hidden border border-border ${CARD_SHADOW} ${CARD_SHADOW_HOVER} transition-all duration-300 hover:-translate-y-1.5`}
+              >
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <img src={s.image} alt={s.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.06]" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/35 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
-                <div className="p-6">
+                <div className="flex flex-col flex-1 p-6 md:p-7">
                   <h3 className="font-display font-semibold text-lg text-navy-900 leading-snug">{s.title}</h3>
                   <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{s.summary}</p>
-                  <span className="mt-5 inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.12em] text-accent group-hover:gap-3 transition-all">
-                    Learn more <ArrowRight className="h-3.5 w-3.5" />
-                  </span>
+                  <div className="mt-auto pt-6 flex items-center justify-between">
+                    <span className="text-[12px] font-semibold uppercase tracking-[0.12em] text-accent">Learn more</span>
+                    <span className="h-9 w-9 rounded-full grid place-items-center bg-[#EDF2F7] text-navy-900 transition-all duration-300 group-hover:bg-accent group-hover:text-white group-hover:translate-x-1">
+                      <ArrowRight className="h-4 w-4" />
+                    </span>
+                  </div>
                 </div>
               </Link>
             ))}
@@ -135,19 +147,25 @@ export default function Home() {
             </div>
             <Link href="/projects" className="link-accent shrink-0">All projects <ArrowRight className="h-3.5 w-3.5" /></Link>
           </div>
-          <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-7">
             {featured.map((p) => (
-              <article key={p.slug} className="group bg-white border border-border hover:border-navy-900/25 hover:shadow-sm transition-all">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img src={p.image} alt={p.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <article
+                key={p.slug}
+                className={`group flex flex-col bg-white rounded-2xl overflow-hidden border border-border ${CARD_SHADOW} ${CARD_SHADOW_HOVER} transition-all duration-300 hover:-translate-y-1.5`}
+              >
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img src={p.image} alt={p.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.06]" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/35 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <span className="absolute top-4 left-4 rounded-full bg-white/95 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-navy-900 shadow-sm">
+                    {p.category}
+                  </span>
                 </div>
-                <div className="p-6">
-                  <div className="eyebrow-plain">{p.category}</div>
-                  <h3 className="mt-3 font-display font-semibold text-lg text-navy-900 leading-snug">{p.title}</h3>
+                <div className="flex flex-col flex-1 p-6 md:p-7">
+                  <h3 className="font-display font-semibold text-lg text-navy-900 leading-snug">{p.title}</h3>
                   <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{p.summary}</p>
-                  <div className="mt-5 pt-4 border-t border-border flex items-center justify-between text-[12px]">
-                    <span className="text-navy-900 font-semibold">{p.client}</span>
-                    <span className="text-steel">{p.state}</span>
+                  <div className="mt-auto pt-6 flex items-center justify-between text-[12px] border-t border-border">
+                    <span className="pt-4 text-navy-900 font-semibold">{p.client}</span>
+                    <span className="pt-4 text-steel">{p.state}</span>
                   </div>
                 </div>
               </article>
