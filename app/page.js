@@ -34,7 +34,7 @@ export default function Home() {
           <div className="fade-up max-w-4xl">
             <div className="eyebrow">Telecom · HDD · CGD · Civil · Electrical</div>
             <h1 className="mt-6 font-display font-semibold text-[clamp(2.6rem,5.5vw,4.5rem)] leading-[1.04] tracking-[-0.03em] text-balance">
-              Digital & utility infrastructure,<br />
+              Telecom & Township Digital Infrastructure,<br />
               <span className="text-accent">built with precision.</span>
             </h1>
             <p className="mt-6 md:mt-7 max-w-xl text-white/70 text-[15px] md:text-[16px] leading-relaxed">
